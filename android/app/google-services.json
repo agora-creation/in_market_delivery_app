@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "19804573318",
+    "project_id": "inmarket-31a83",
+    "storage_bucket": "inmarket-31a83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19804573318:android:088e5a579513bdb2858b07",
+        "android_client_info": {
+          "package_name": "com.agoracreation.in_market_delivery_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19804573318-mtjpv57rf76sgi30s2e861i3uk7c64sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM8TUbip4BpzYISt5ebexbhUg5FtKoEg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19804573318-mtjpv57rf76sgi30s2e861i3uk7c64sa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "19804573318-ksdb47ungqf21fe5aemf2m80r5l2pput.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.agoracreation.inMarketShopApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19804573318:android:a68cfc88daba3aa6858b07",
+        "android_client_info": {
+          "package_name": "com.agoracreation.in_market_shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19804573318-mtjpv57rf76sgi30s2e861i3uk7c64sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM8TUbip4BpzYISt5ebexbhUg5FtKoEg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19804573318-mtjpv57rf76sgi30s2e861i3uk7c64sa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "19804573318-ksdb47ungqf21fe5aemf2m80r5l2pput.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.agoracreation.inMarketShopApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19804573318:android:03e98f9f18fed3c1858b07",
+        "android_client_info": {
+          "package_name": "com.agoracreation.in_market_user_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19804573318-mtjpv57rf76sgi30s2e861i3uk7c64sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM8TUbip4BpzYISt5ebexbhUg5FtKoEg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19804573318-mtjpv57rf76sgi30s2e861i3uk7c64sa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "19804573318-ksdb47ungqf21fe5aemf2m80r5l2pput.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.agoracreation.inMarketShopApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
