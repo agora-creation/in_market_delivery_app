@@ -40,7 +40,23 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script>
+      var firebaseConfig = {
+    apiKey: "AIzaSyCUPyXCr_0xstRUhts-U_gzgaErUcPPWQI",
+    authDomain: "inmarket-31a83.firebaseapp.com",
+    projectId: "inmarket-31a83",
+    storageBucket: "inmarket-31a83.appspot.com",
+    messagingSenderId: "19804573318",
+    appId: "1:19804573318:web:6de659b2e5be3378858b07",
+    measurementId: "G-CVVVVYDLTT"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
