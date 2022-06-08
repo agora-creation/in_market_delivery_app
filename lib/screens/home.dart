@@ -8,6 +8,7 @@ import 'package:in_market_delivery_app/providers/order.dart';
 import 'package:in_market_delivery_app/screens/detail.dart';
 import 'package:in_market_delivery_app/screens/history.dart';
 import 'package:in_market_delivery_app/screens/setting.dart';
+import 'package:in_market_delivery_app/screens/shop.dart';
 import 'package:in_market_delivery_app/widgets/center_text.dart';
 import 'package:in_market_delivery_app/widgets/custom_text_button.dart';
 import 'package:in_market_delivery_app/widgets/order_card.dart';
@@ -73,7 +74,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 }
                 if (shop == null) {
-                  return ShopNotCard(authProvider: authProvider);
+                  return ShopNotCard(
+                    onPressed: () => overlayScreen(context, const ShopScreen()),
+                  );
                 }
                 if (orders.isEmpty) {
                   return const CenterText(label: '配達待ちの注文がありません');

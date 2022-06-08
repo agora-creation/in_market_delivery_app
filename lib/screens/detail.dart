@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:in_market_delivery_app/helpers/functions.dart';
+import 'package:in_market_delivery_app/models/delivery.dart';
 import 'package:in_market_delivery_app/models/shop_order.dart';
+import 'package:in_market_delivery_app/providers/auth.dart';
 import 'package:in_market_delivery_app/providers/order.dart';
+import 'package:in_market_delivery_app/widgets/cart_list.dart';
 import 'package:in_market_delivery_app/widgets/error_dialog.dart';
 import 'package:in_market_delivery_app/widgets/label_column.dart';
 import 'package:in_market_delivery_app/widgets/round_button.dart';
@@ -19,6 +22,8 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+    DeliveryModel? delivery = authProvider.delivery;
     final orderProvider = Provider.of<OrderProvider>(context);
 
     return Scaffold(
@@ -57,56 +62,63 @@ class _DetailScreenState extends State<DetailScreen> {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    const SizedBox(height: 32),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        RoundButton(
-                          labelText: '配達中にする',
-                          labelColor: Colors.white,
-                          backgroundColor: Colors.blue.shade400,
-                          onPressed: () async {
-                            String? errorText = await orderProvider.update(
-                              order: widget.order,
-                              status: 3,
-                            );
-                            if (errorText != null) {
-                              showDialog(
-                                context: context,
-                                builder: (_) => ErrorDialog(
-                                  message: errorText,
-                                ),
-                              );
-                              return;
-                            }
-                            if (!mounted) return;
-                            Navigator.pop(context);
-                          },
-                        ),
-                        RoundButton(
-                          labelText: '配達完了にする',
-                          labelColor: Colors.white,
-                          backgroundColor: Colors.blue.shade400,
-                          onPressed: () async {
-                            String? errorText = await orderProvider.update(
-                              order: widget.order,
-                              status: 0,
-                            );
-                            if (errorText != null) {
-                              showDialog(
-                                context: context,
-                                builder: (_) => ErrorDialog(
-                                  message: errorText,
-                                ),
-                              );
-                              return;
-                            }
-                            if (!mounted) return;
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
+                    LabelColumn(
+                      labelText: '注文商品',
+                      children: widget.order.cartList.map((cart) {
+                        return CartList(cart: cart);
+                      }).toList(),
                     ),
+                    const SizedBox(height: 32),
+                    widget.order.status == 2
+                        ? RoundButton(
+                            labelText: '配達中にする',
+                            labelColor: Colors.white,
+                            backgroundColor: Colors.blue.shade400,
+                            onPressed: () async {
+                              String? errorText = await orderProvider.update(
+                                order: widget.order,
+                                delivery: delivery,
+                                status: 3,
+                              );
+                              if (errorText != null) {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => ErrorDialog(
+                                    message: errorText,
+                                  ),
+                                );
+                                return;
+                              }
+                              if (!mounted) return;
+                              Navigator.pop(context);
+                            },
+                          )
+                        : Container(),
+                    widget.order.status == 3
+                        ? RoundButton(
+                            labelText: '配達完了にする',
+                            labelColor: Colors.white,
+                            backgroundColor: Colors.blue.shade400,
+                            onPressed: () async {
+                              String? errorText = await orderProvider.update(
+                                order: widget.order,
+                                delivery: delivery,
+                                status: 0,
+                              );
+                              if (errorText != null) {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => ErrorDialog(
+                                    message: errorText,
+                                  ),
+                                );
+                                return;
+                              }
+                              if (!mounted) return;
+                              Navigator.pop(context);
+                            },
+                          )
+                        : Container(),
                   ],
                 ),
               ),

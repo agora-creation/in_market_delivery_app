@@ -5,20 +5,6 @@ class ShopService {
   final String _collection = 'shop';
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  Future<List<ShopModel>> selectList() async {
-    List<ShopModel> shops = [];
-    await _firebaseFirestore
-        .collection(_collection)
-        .orderBy('createdAt', descending: true)
-        .get()
-        .then((value) {
-      for (DocumentSnapshot<Map<String, dynamic>> data in value.docs) {
-        shops.add(ShopModel.fromSnapshot(data));
-      }
-    });
-    return shops;
-  }
-
   Future<ShopModel?> select({String? id}) async {
     ShopModel? shop;
     await _firebaseFirestore
@@ -27,6 +13,20 @@ class ShopService {
         .get()
         .then((value) {
       shop = ShopModel.fromSnapshot(value);
+    });
+    return shop;
+  }
+
+  Future<ShopModel?> selectCode({String? code}) async {
+    ShopModel? shop;
+    await _firebaseFirestore
+        .collection(_collection)
+        .where('code', isEqualTo: code ?? 'error')
+        .get()
+        .then((value) {
+      for (DocumentSnapshot<Map<String, dynamic>> data in value.docs) {
+        shop = ShopModel.fromSnapshot(data);
+      }
     });
     return shop;
   }

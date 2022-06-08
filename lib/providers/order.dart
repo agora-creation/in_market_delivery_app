@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:in_market_delivery_app/helpers/functions.dart';
+import 'package:in_market_delivery_app/models/delivery.dart';
 import 'package:in_market_delivery_app/models/shop.dart';
 import 'package:in_market_delivery_app/models/shop_order.dart';
 import 'package:in_market_delivery_app/services/shop_order.dart';
@@ -10,14 +11,18 @@ class OrderProvider with ChangeNotifier {
 
   Future<String?> update({
     ShopOrderModel? order,
+    DeliveryModel? delivery,
     required int status,
   }) async {
     String? errorText;
     if (order == null) errorText = '注文情報の更新に失敗しました。';
+    if (delivery == null) errorText = '注文情報の更新に失敗しました。';
     try {
       orderService.update({
         'id': order?.id,
         'shopId': order?.shopId,
+        'deliveryId': delivery?.id,
+        'deliveryName': delivery?.name,
         'status': status,
       });
     } catch (e) {

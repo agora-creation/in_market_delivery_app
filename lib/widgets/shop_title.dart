@@ -17,7 +17,7 @@ class ShopTitle extends StatelessWidget {
       onTap: onTap,
       child: Row(
         children: [
-          Text(shop?.name ?? '配達元未設定'),
+          Text(shop?.name ?? ''),
           const SizedBox(width: 8),
           shop != null ? const Icon(Icons.arrow_drop_down) : Container(),
         ],

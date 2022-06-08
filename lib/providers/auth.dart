@@ -23,12 +23,14 @@ class AuthProvider with ChangeNotifier {
   TextEditingController passwordController = TextEditingController();
   TextEditingController rePasswordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+  TextEditingController codeController = TextEditingController();
 
   void clearController() {
     emailController.text = '';
     passwordController.text = '';
     rePasswordController.text = '';
     nameController.text = '';
+    codeController.text = '';
   }
 
   AuthProvider.initialize() : auth = FirebaseAuth.instance {
@@ -186,13 +188,12 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<ShopModel>> selectShops() async {
-    return await shopService.selectList();
-  }
-
-  Future<String?> updateShop({ShopModel? shop}) async {
+  Future<String?> updateShop() async {
     String? errorText;
-    if (shop == null) errorText = '店舗の選択に失敗しました。';
+    if (codeController.text == '') errorText = '認証に失敗しました。';
+    ShopModel? shop =
+        await shopService.selectCode(code: codeController.text.trim());
+    if (shop == null) errorText = '認証に失敗しました。';
     try {
       deliveryService.update({
         'id': _delivery?.id,
@@ -200,7 +201,7 @@ class AuthProvider with ChangeNotifier {
       });
       _currentShop = shop;
     } catch (e) {
-      errorText = '店舗の選択に失敗しました。';
+      errorText = '認証に失敗しました。';
     }
     notifyListeners();
     return errorText;
