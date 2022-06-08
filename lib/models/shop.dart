@@ -6,6 +6,7 @@ class ShopModel {
   String _password = '';
   String _name = '';
   bool _priceView = false;
+  String _code = '';
   String _token = '';
   DateTime _createdAt = DateTime.now();
 
@@ -14,6 +15,7 @@ class ShopModel {
   String get password => _password;
   String get name => _name;
   bool get priceView => _priceView;
+  String get code => _code;
   String get token => _token;
   DateTime get createdAt => _createdAt;
 
@@ -23,6 +25,7 @@ class ShopModel {
     _password = snapshot.data()!['password'] ?? '';
     _name = snapshot.data()!['name'] ?? '';
     _priceView = snapshot.data()!['priceView'] ?? false;
+    _code = snapshot.data()!['code'] ?? '';
     _token = snapshot.data()!['token'] ?? '';
     _createdAt = snapshot.data()!['createdAt'].toDate() ?? DateTime.now();
   }

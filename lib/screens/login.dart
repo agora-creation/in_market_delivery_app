@@ -9,7 +9,7 @@ import 'package:in_market_delivery_app/widgets/custom_text_form_field.dart';
 import 'package:in_market_delivery_app/widgets/error_dialog.dart';
 import 'package:in_market_delivery_app/widgets/link_button.dart';
 import 'package:in_market_delivery_app/widgets/login_title.dart';
-import 'package:in_market_delivery_app/widgets/round_lg_button.dart';
+import 'package:in_market_delivery_app/widgets/round_button.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -62,25 +62,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         iconData: Icons.lock,
                       ),
                       const SizedBox(height: 16),
-                      RoundLgButton(
-                        labelText: 'ログイン',
-                        labelColor: Colors.black54,
-                        backgroundColor: Colors.white,
-                        onPressed: () async {
-                          String? errorText = await authProvider.login();
-                          if (errorText != null) {
-                            showDialog(
-                              context: context,
-                              builder: (_) => ErrorDialog(
-                                message: errorText,
-                              ),
-                            );
-                            return;
-                          }
-                          authProvider.clearController();
-                          if (!mounted) return;
-                          changeScreen(context, const HomeScreen());
-                        },
+                      SizedBox(
+                        width: double.infinity,
+                        child: RoundButton(
+                          labelText: 'ログイン',
+                          labelColor: Colors.black54,
+                          backgroundColor: Colors.white,
+                          onPressed: () async {
+                            String? errorText = await authProvider.login();
+                            if (errorText != null) {
+                              showDialog(
+                                context: context,
+                                builder: (_) => ErrorDialog(
+                                  message: errorText,
+                                ),
+                              );
+                              return;
+                            }
+                            authProvider.clearController();
+                            if (!mounted) return;
+                            changeScreen(context, const HomeScreen());
+                          },
+                        ),
                       ),
                       const SizedBox(height: 60),
                       LinkButton(

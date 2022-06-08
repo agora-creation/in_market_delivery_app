@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 
-class CustomTextButton extends StatelessWidget {
+class SearchButton extends StatelessWidget {
+  final IconData? iconData;
   final String? labelText;
-  final Color? backgroundColor;
   final Function()? onPressed;
 
-  const CustomTextButton({
+  const SearchButton({
+    this.iconData,
     this.labelText,
-    this.backgroundColor,
     this.onPressed,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return TextButton.icon(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        backgroundColor: backgroundColor,
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        backgroundColor: Colors.lightBlue,
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
       ),
-      child: Text(
+      icon: Icon(iconData, color: Colors.white),
+      label: Text(
         labelText ?? '',
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 18,
+          fontSize: 20,
         ),
       ),
     );

@@ -9,7 +9,7 @@ import 'package:in_market_delivery_app/widgets/error_dialog.dart';
 import 'package:in_market_delivery_app/widgets/icon_label.dart';
 import 'package:in_market_delivery_app/widgets/link_button.dart';
 import 'package:in_market_delivery_app/widgets/login_title.dart';
-import 'package:in_market_delivery_app/widgets/round_lg_button.dart';
+import 'package:in_market_delivery_app/widgets/round_button.dart';
 import 'package:provider/provider.dart';
 
 class RegistScreen extends StatefulWidget {
@@ -82,13 +82,12 @@ class _RegistScreenState extends State<RegistScreen> {
                       const SizedBox(height: 8),
                       CustomTextFormField(
                         controller: authProvider.nameController,
-                        obscureText: true,
                         keyboardType: TextInputType.name,
                         labelText: 'お名前',
                         iconData: Icons.person,
                       ),
                       const SizedBox(height: 16),
-                      RoundLgButton(
+                      RoundButton(
                         labelText: '新規登録',
                         labelColor: Colors.black54,
                         backgroundColor: Colors.white,

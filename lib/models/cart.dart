@@ -5,6 +5,7 @@ class CartModel {
   int _price = 0;
   String _unit = '';
   String _imageUrl = '';
+  int quantityDesired = 0;
   int quantity = 0;
 
   String get id => _id;
@@ -21,6 +22,7 @@ class CartModel {
     _price = data['price'] ?? 0;
     _unit = data['unit'] ?? '';
     _imageUrl = data['imageUrl'] ?? '';
+    quantityDesired = data['quantityDesired'] ?? 0;
     quantity = data['quantity'] ?? 0;
   }
 
@@ -31,6 +33,7 @@ class CartModel {
         'price': _price,
         'unit': _unit,
         'imageUrl': _imageUrl,
+        'quantityDesired': quantityDesired,
         'quantity': quantity,
       };
 }
