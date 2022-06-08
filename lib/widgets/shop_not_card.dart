@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:in_market_delivery_app/providers/auth.dart';
 import 'package:in_market_delivery_app/widgets/custom_text_button.dart';
+import 'package:in_market_delivery_app/widgets/custom_text_form_field2.dart';
 import 'package:in_market_delivery_app/widgets/round_button.dart';
 
 class ShopNotCard extends StatelessWidget {
@@ -78,6 +79,12 @@ class _ShopSelectDialogState extends State<ShopSelectDialog> {
               color: Colors.black54,
               fontSize: 20,
             ),
+          ),
+          const SizedBox(height: 16),
+          CustomTextFormField2(
+            controller: TextEditingController(),
+            labelText: '認証用コード',
+            iconData: Icons.code,
           ),
           const SizedBox(height: 16),
           Row(
