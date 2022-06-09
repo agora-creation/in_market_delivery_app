@@ -87,25 +87,28 @@ class _RegistScreenState extends State<RegistScreen> {
                         iconData: Icons.person,
                       ),
                       const SizedBox(height: 16),
-                      RoundButton(
-                        labelText: '新規登録',
-                        labelColor: Colors.black54,
-                        backgroundColor: Colors.white,
-                        onPressed: () async {
-                          String? errorText = await authProvider.regist();
-                          if (errorText != null) {
-                            showDialog(
-                              context: context,
-                              builder: (_) => ErrorDialog(
-                                message: errorText,
-                              ),
-                            );
-                            return;
-                          }
-                          authProvider.clearController();
-                          if (!mounted) return;
-                          changeScreen(context, const HomeScreen());
-                        },
+                      SizedBox(
+                        width: double.infinity,
+                        child: RoundButton(
+                          labelText: '新規登録',
+                          labelColor: Colors.black54,
+                          backgroundColor: Colors.white,
+                          onPressed: () async {
+                            String? errorText = await authProvider.regist();
+                            if (errorText != null) {
+                              showDialog(
+                                context: context,
+                                builder: (_) => ErrorDialog(
+                                  message: errorText,
+                                ),
+                              );
+                              return;
+                            }
+                            authProvider.clearController();
+                            if (!mounted) return;
+                            changeScreen(context, const HomeScreen());
+                          },
+                        ),
                       ),
                       const SizedBox(height: 60),
                       LinkButton(
